@@ -7,6 +7,10 @@ public class TrumpMove : MonoBehaviour
 	Rigidbody2D rb;
     int MoveX = 0;
     int MoveY = 0;
+    public float firerate = .3f;
+    float time_Since_Shot = 0f;
+
+    public GameObject bullet;
     
     void Start()
     {
@@ -40,13 +44,19 @@ public class TrumpMove : MonoBehaviour
         }
     
         if(MoveX == 0  && MoveY ==0){
-            rb.velocity *= .95f;
+            rb.velocity *= .96f;
         }
         else{
-            rb.velocity = Vector2.Lerp(new Vector2(MoveX*4f ,MoveY*4f ),rb.velocity,.5f);
+            rb.velocity = Vector2.Lerp(new Vector2(MoveX*5f ,MoveY*5f ),rb.velocity,.5f);
         }
 
-        
+
+        if (Input.GetKey("space") && time_Since_Shot >= firerate)
+        {
+        	Instantiate(bullet, transform.position + new Vector3(.3f,.25f,0),Quaternion.identity);
+            time_Since_Shot = 0f;
+        }
+        time_Since_Shot += Time.deltaTime;        
         
     }
 }
