@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
 
 	public float speed = 10f;
@@ -24,5 +24,15 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnTriggerEnter2D(Collider2D other){
+
+        if(other.gameObject.tag == "Player"){
+            UnityEngine.Debug.Log("Hit Player!");
+            Destroy(gameObject);
+
+        }
+    	
     }
 }

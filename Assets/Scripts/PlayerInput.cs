@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrumpMove : MonoBehaviour
+public class PlayerInput : MonoBehaviour
 {
 	Rigidbody2D rb;
     int MoveX = 0;
@@ -44,7 +44,7 @@ public class TrumpMove : MonoBehaviour
         }
     
         if(MoveX == 0  && MoveY ==0){
-            rb.velocity *= .96f;
+            rb.velocity *= .90f;
         }
         else{
             rb.velocity = Vector2.Lerp(new Vector2(MoveX*5f ,MoveY*5f ),rb.velocity,.5f);
